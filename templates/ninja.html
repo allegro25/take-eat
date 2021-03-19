@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+	<form action="/add_store" method="POST">
+
+		<input type="text" name="store_name" placeholder="Nome" required>
+		<input type="text" name="store_description" placeholder="Descricao" required>
+		<input type="text" name="store_phone" placeholder="Telefone" required>
+		<input type="text" name="store_email" placeholder="Email">
+		<input type="time" datetime="hh:mm" name="start_time" placeholder="Início Recolha" required>
+		<input type="time" name="end_time" datetime="hh:mm" placeholder="Fim Recolha" required>
+		<input type="number" name="available_boxes" placeholder="Boxes disponiveis" required>
+
+
+		<button type="submit">Add_Store</button>
+	</form>
+	<p></p>
+
+		<table border="1">
+			<thead>
+				<tr>
+					<td>Store ID</td>
+					<td>Store Name</td>
+					<td>Store Description</td>
+					<td>Store Phone Number</td>
+					<td>Store Email</td>
+					<td>Store Status</td>
+					<td>Available Boxes</td>
+					<td>Start Time</td>
+					<td>End Time</td>
+					<td>Sold Boxes</td>
+				</tr>
+			</thead>
+			<tbody>
+			{% for result in data %}
+				<tr>
+					<td>{{ result.0 }}</td>
+					<td>{{ result.1 }}</td>
+					<td>{{ result.2 }}</td>
+					<td>{{ result.3 }}</td>
+					<td>{{ result.4 }}</td>
+					<td>{{ result.5 }}</td>
+					<td>{{ result.6 }}</td>
+					<td>{{ result.7 }}</td>
+					<td>{{ result.8 }}</td>
+					<td>{{ result.9 }}</td>
+					<td><a href="/edit/{{ result.0 }}">Edit</a></td>
+					<td><a href="/delete/{{ result.0 }}">Delete</a></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+
+</body>
+</html>
